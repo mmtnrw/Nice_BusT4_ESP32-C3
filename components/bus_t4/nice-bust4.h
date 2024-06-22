@@ -413,8 +413,8 @@ class NiceBusT4 : public Component, public Cover {
 
     uint32_t last_position_time{0};  // Время последнего обновления текущего положения
     uint32_t update_interval{500};
-    uint32_t last_update{0};
-    uint32_t last_uart_byte{0};
+    uint32_t last_update_{0};
+    uint32_t last_uart_byte_{0};
 
     CoverOperation last_published_op;  // Последние опубликованные состояние и положение
     float last_published_pos{-1};
