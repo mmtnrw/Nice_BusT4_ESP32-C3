@@ -73,19 +73,21 @@ void NiceBusT4::setup() {
 
   _uart =  uart_init(_UART_NO, BAUD_WORK, SERIAL_8N1, SERIAL_FULL, TX_P, 256, false);
   // кто в сети?
-  this->tx_buffer_.push(gen_inf_cmd(0x00, 0xff, FOR_ALL, WHO, GET, 0x00));
+  // this->tx_buffer_.push(gen_inf_cmd(0x00, 0xff, FOR_ALL, WHO, GET, 0x00));
   
 
 }
 
 void NiceBusT4::loop() {
 
-    if ((millis() - this->last_update_) > 60000) {    // каждые 10 секунд
+    if ((millis() - this->last_update_) > 10000) {    // каждые 10 секунд
 // если привод не определился с первого раза, попробуем позже
         std::vector<uint8_t> unknown = {0x55, 0x55};
         if (this->init_ok == false) {
           this->tx_buffer_.push(gen_inf_cmd(0x00, 0xff, FOR_ALL, WHO, GET, 0x00));
           this->tx_buffer_.push(gen_inf_cmd(0x00, 0xff, FOR_ALL, PRD, GET, 0x00)); //запрос продукта
+	  this->last_update_=millis()
+	  return
 	  
         }
         
