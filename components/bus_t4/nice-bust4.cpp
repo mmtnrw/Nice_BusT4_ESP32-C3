@@ -86,6 +86,7 @@ void NiceBusT4::loop() {
         if (this->init_ok == false) {
           this->tx_buffer_.push(gen_inf_cmd(0x00, 0xff, FOR_ALL, WHO, GET, 0x00));
           this->tx_buffer_.push(gen_inf_cmd(0x00, 0xff, FOR_ALL, PRD, GET, 0x00)); //запрос продукта
+	  break;
         }
         
         else if (this->class_gate_ == 0x55) {
