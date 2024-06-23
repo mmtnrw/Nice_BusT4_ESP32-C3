@@ -858,8 +858,8 @@ std::vector<uint8_t> NiceBusT4::gen_control_cmd(const uint8_t control_cmd) {
   frame.insert(frame.begin(), START_CODE);
 
   // для вывода команды в лог
-  //  std::string pretty_cmd = format_hex_pretty(frame);
-  //  ESP_LOGI(TAG,  "Сформирована команда: %S ", pretty_cmd.c_str() );
+  std::string pretty_cmd = format_hex_pretty(frame);
+  ESP_LOGI(TAG,  "Сформирована команда: %S ", pretty_cmd.c_str() );
 
   return frame;
 }
@@ -890,8 +890,8 @@ std::vector<uint8_t> NiceBusT4::gen_inf_cmd(const uint8_t to_addr1, const uint8_
   frame.insert(frame.begin(), START_CODE);
 
   // для вывода команды в лог
-  //  std::string pretty_cmd = format_hex_pretty(frame);
-  //  ESP_LOGI(TAG,  "Сформирован INF пакет: %S ", pretty_cmd.c_str() );
+  std::string pretty_cmd = format_hex_pretty(frame);
+  ESP_LOGI(TAG,  "Сформирован INF пакет: %S ", pretty_cmd.c_str() );
 
   return frame;
 
